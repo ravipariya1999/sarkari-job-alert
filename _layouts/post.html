@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="detail">
+  <p class="eyebrow">{{ page.category }}{% if page.organization %} • {{ page.organization }}{% endif %}</p>
+  <h1>{{ page.title }}</h1>
+  <p class="muted">Published: {{ page.date | date: "%d %B %Y" }}{% if page.last_date %} • Last date: {{ page.last_date }}{% endif %}</p>
+  <div class="ad-placeholder">Advertisement Space</div>
+  <div class="facts">
+    {% if page.qualification %}<p><b>Qualification:</b> {{ page.qualification }}</p>{% endif %}
+    {% if page.age_limit %}<p><b>Age limit:</b> {{ page.age_limit }}</p>{% endif %}
+    {% if page.fee %}<p><b>Application fee:</b> {{ page.fee }}</p>{% endif %}
+    {% if page.last_date %}<p><b>Last date:</b> {{ page.last_date }}</p>{% endif %}
+  </div>
+  <div class="article-body">{{ content }}</div>
+  <div class="actions">
+    {% if page.notification_url %}<a class="button" href="{{ page.notification_url }}" target="_blank" rel="noopener noreferrer">Official Notification</a>{% endif %}
+    {% if page.apply_url %}<a class="button secondary" href="{{ page.apply_url }}" target="_blank" rel="noopener noreferrer">Apply Online</a>{% endif %}
+  </div>
+  <p class="notice"><b>Disclaimer:</b> आवेदन से पहले आधिकारिक वेबसाइट पर सभी विवरण जाँचें।</p>
+</article>
