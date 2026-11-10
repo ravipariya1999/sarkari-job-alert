@@ -1,0 +1,43 @@
+---
+layout: default
+title: Home
+---
+<section class="intro">
+<p class="eyebrow">सरकारी नौकरी और परीक्षा अपडेट</p>
+<h1>Latest Government Jobs & Exam Updates</h1>
+<p>नौकरी, एडमिट कार्ड, रिजल्ट और आंसर की की जानकारी एक जगह। आवेदन से पहले आधिकारिक नोटिफिकेशन अवश्य पढ़ें।</p>
+<input id="postSearch" class="search" type="search" placeholder="नौकरी, विभाग या परीक्षा खोजें...">
+</section>
+<div class="quick-grid">
+{% assign quick = "Latest Jobs,Admit Card,Results,Answer Key,Admission,Syllabus,Scholarship,State Jobs" | split: "," %}
+{% for cat in quick %}
+<a class="quick-card" href="#{{ cat | slugify }}">{{ cat }}</a>
+{% endfor %}
+</div>
+<div class="ad-placeholder">Advertisement Space</div>
+{% assign categories = "Latest Jobs,Admit Card,Results,Answer Key,Admission,Syllabus,Scholarship,State Jobs,Central Jobs" | split: "," %}
+{% for cat in categories %}
+<section class="category-section" id="{{ cat | slugify }}">
+<div class="section-heading"><h2>{{ cat }}</h2></div>
+<div class="post-list">
+{% assign posts = site.posts | where: "category", cat %}
+{% for post in posts limit: 8 %}
+<article class="post-card searchable">
+<span class="post-date">{{ post.date | date: "%d-%m-%Y" }}</span>
+<h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+{% if post.organization %}<p>{{ post.organization }}</p>{% endif %}
+{% if post.last_date %}<p class="deadline">Last date: {{ post.last_date }}</p>{% endif %}
+</article>
+{% else %}
+<p class="empty">इस सेक्शन में अभी कोई अपडेट नहीं है।</p>
+{% endfor %}
+</div></section>
+{% endfor %}
+<div class="ad-placeholder">Advertisement Space</div>
+<section class="notice"><h2>महत्वपूर्ण सूचना</h2><p>यह एक स्वतंत्र सूचना पोर्टल है, सरकारी वेबसाइट नहीं। सभी जानकारी आधिकारिक अधिसूचना से सत्यापित करें।</p></section>
+<script>
+document.getElementById('postSearch').addEventListener('input',function(){
+const q=this.value.toLowerCase();
+document.querySelectorAll('.searchable').forEach(card=>{card.hidden=!card.innerText.toLowerCase().includes(q)});
+});
+</script>
