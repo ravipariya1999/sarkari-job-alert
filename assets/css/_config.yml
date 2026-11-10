@@ -1,0 +1,18 @@
+title: Sarkari Job Alert
+description: Latest Government Jobs, Results, Admit Cards and Exam Updates
+url: "https://ravipariya199.github.io"
+baseurl: "/sarkari-job-alert"
+lang: hi
+timezone: Asia/Kolkata
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      lang: hi
