@@ -1,0 +1,76 @@
+media: assets/uploads
+
+content:
+  - name: job_posts
+    label: Job & Exam Updates
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+      fields:
+        - title
+        - category
+        - organization
+        - last_date
+      sort:
+        - date
+    fields:
+      - name: title
+        label: Post Title
+        type: string
+        required: true
+
+      - name: date
+        label: Publish Date
+        type: date
+        required: true
+
+      - name: category
+        label: Section
+        type: select
+        options:
+          values:
+            - Latest Jobs
+            - Admit Card
+            - Results
+            - Answer Key
+            - Admission
+            - Syllabus
+            - Scholarship
+            - State Jobs
+            - Central Jobs
+
+      - name: organization
+        label: Department / Organization
+        type: string
+
+      - name: last_date
+        label: Last Date
+        type: string
+
+      - name: qualification
+        label: Qualification
+        type: text
+
+      - name: age_limit
+        label: Age Limit
+        type: string
+
+      - name: fee
+        label: Application Fee
+        type: string
+
+      - name: notification_url
+        label: Official Notification URL
+        type: string
+
+      - name: apply_url
+        label: Official Apply URL
+        type: string
+
+      - name: body
+        label: Full Details
+        type: rich-text
+        
