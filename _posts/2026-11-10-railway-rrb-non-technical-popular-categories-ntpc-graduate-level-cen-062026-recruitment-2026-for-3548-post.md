@@ -8,4 +8,6 @@ last_date: 11/08/2026
 qualification: "Bachelor Degree in Any Stream from Any Recognized University in India. "
 age_limit: "33"
 fee: 400/250
+notification_url: https://www.rrbapply.gov.in/#/auth/landing
+apply_url: https://www.rrbapply.gov.in/#/auth/landing
 ---
