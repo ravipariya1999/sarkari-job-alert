@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ page.description | default: site.description | escape }}">
+<title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="{{ '/' | relative_url }}">SARKARI JOB ALERT</a>
+<p>Latest Government Jobs • Results • Admit Cards • Answer Keys</p>
+</header>
+<nav class="nav"><div class="nav-inner">
+<a href="{{ '/' | relative_url }}">Home</a>
+<a href="{{ '/' | relative_url }}#latest-jobs">Latest Jobs</a>
+<a href="{{ '/' | relative_url }}#admit-card">Admit Card</a>
+<a href="{{ '/' | relative_url }}#results">Results</a>
+<a href="{{ '/' | relative_url }}#answer-key">Answer Key</a>
+<a href="{{ '/' | relative_url }}#admission">Admission</a>
+<a href="{{ '/' | relative_url }}#syllabus">Syllabus</a>
+</div></nav>
+<main class="wrap">{{ content }}</main>
+<footer class="footer"><div class="wrap">
+<strong>SARKARI JOB ALERT</strong>
+<p>
+<a href="{{ '/pages/about.html' | relative_url }}">About Us</a>
+<a href="{{ '/pages/privacy-policy.html' | relative_url }}">Privacy Policy</a>
+<a href="{{ '/pages/contact.html' | relative_url }}">Contact Us</a>
+<a href="{{ '/pages/disclaimer.html' | relative_url }}">Disclaimer</a>
+</p>
+<small>© {{ site.time | date: "%Y" }} Sarkari Job Alert. All rights reserved.</small>
+</div></footer>
+</body>
+</html>
