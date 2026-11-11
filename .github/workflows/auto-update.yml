@@ -1,6 +1,19 @@
 name: Auto Update Workflow
 
+
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/auto-update.yml"
+      - "scripts/fetch_jobs.py"
+
+  schedule:
+    - cron: "30 2 * * *"
+
+  workflow_dispatch:
+  
   schedule:
     - cron: "30 2 * * *"
   workflow_dispatch:
