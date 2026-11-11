@@ -1,7 +1,12 @@
+
 name: Auto Update Workflow
 
-
 on:
+  schedule:
+    - cron: "30 2 * * *"
+
+  workflow_dispatch:
+
   push:
     branches:
       - main
@@ -9,17 +14,9 @@ on:
       - ".github/workflows/auto-update.yml"
       - "scripts/fetch_jobs.py"
 
-  schedule:
-    - cron: "30 2 * * *"
-
-  workflow_dispatch:
-  
-  schedule:
-    - cron: "30 2 * * *"
-  workflow_dispatch:
-
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: sarkari-job-auto-update
@@ -48,20 +45,20 @@ jobs:
         run: |
           python scripts/fetch_jobs.py
 
-      
-      - name: Save Drafts
-        run: |
-          mkdir -p _drafts
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A -- _drafts
-          if git diff --cached --quiet; then
-            echo "No new drafts to save"
-          else
-            git commit -m "Add government job drafts"
-          fi
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
-          
-          
+      - name: Create Review Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ github.token }}
+          add-paths: |
+            _drafts/
+          branch: job-drafts
+          base: main
+          delete-branch: true
+          draft: true
+          title: "New Government Job Updates - Review Required"
+          commit-message: "Add verified job update drafts"
+          body: |
+            New government job updates are ready for review.
+            Please verify all information and official links before approval.
+            Do not publish without manual verification.
+            
