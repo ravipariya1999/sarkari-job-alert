@@ -1,5 +1,5 @@
 
-name: Daily Sarkari Job Draft Update
+name: Auto Update Workflow
 
 on:
   schedule:
@@ -30,7 +30,7 @@ jobs:
         run: |
           python scripts/fetch_jobs.py
 
-            - name: Save Drafts
+      - name: Save Drafts
         run: |
           mkdir -p _drafts
           git config user.name "github-actions[bot]"
